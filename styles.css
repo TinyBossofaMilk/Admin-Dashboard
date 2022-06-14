@@ -1,23 +1,41 @@
+
 :root
 {
-    --background-color: rgba(56, 143, 221, 0.8);
-    --default-font: Arial;    
+    --taskbar-color: #10a1e4e1;
+    --default-font: Arial, Helvetica, sans-serif; 
+    --rounded-border: 10px;
+    --padding: 10px;
+    font-family: var(--default-font);
 }
 
 body 
 {
-    display: inline-grid;
-    grid-template: 75px 1fr / 1fr 3fr ;
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    grid-template: 75px 1fr / 1fr 3fr;
+
+    /* align-content: stretch; */
     /* grid-auto-rows: auto; */
-
-
     /* grid-template-columns: 1fr 3fr; */
     /* grid-template-rows:  auto; */
 }
 
+h1
+{
+    font-size: x-large;
+}
+
 .taskbar
 {
-    grid-column: 1 -1;
+    background: var(--taskbar-color);
+    grid-row: 1 / -1;
+    font-weight: bold;
+    padding-left: 25px;
+    font-size: 30px;
 }
 
 .searchHeader
@@ -27,33 +45,54 @@ body
 
 .worktable
 {
+    background: rgb(189, 189, 189);
     grid-area: 2 / 2 ;
     display: grid;
-    grid-template: auto / 3fr 1fr;
+    grid-template: 45px auto / 3fr 1fr;
+    padding: 20px;
+    gap: 10px
 }
 
 .projects 
 {
     grid-area: 2 / 1;
-    display: grid;
-    grid-template: minmax(75px, 1fr) / 1fr 1fr;
+    display: grid; 
+    grid-template:  minmax( 75px, 1fr) / 1fr 1fr;
     grid-auto-rows: minmax(75px, 1fr);
     gap: 10px;
+}
+
+.projects .card
+{
+    border-radius: var(--rounded-border);
+    padding: var(--padding);
+    background: white;
+    box-shadow: inset yellow 3px 1px;
 }
 
 .card
 {
     align-items: stretch;
-
+    justify-items: center;
 }
 
 .secondary-menu-bar
 {
     grid-column: 2;
     grid-template-rows: 1fr 1fr;
+    padding: var(--padding);
+    justify-content :stretch;
 
 }
 
-.secondary-menu-bar
+.announcements, .trending
 {
+    background: white;
+    border-radius: var(--rounded-border);
+    padding: var(--padding);
+}
+
+.announcements .card, .trending .card
+{
+    border-bottom: 1px black solid;
 }
